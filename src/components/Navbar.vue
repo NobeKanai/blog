@@ -32,7 +32,7 @@
   <button
     @click="showAside = !showAside"
     :class="{'show': showAside}"
-    class="md:hidden transform rounded-full border border-black sticky top-3 left-3 z-50 bg-white px-3 py-1 font-light text-sm bg-opacity-90 hover:bg-black hover:text-white transition duration-300 ease-linear"
+    class="md:hidden transform rounded-full border border-black fixed top-3 left-3 z-50 bg-white px-3 py-1 font-light text-sm bg-opacity-90 hover:bg-black hover:text-white transition duration-300 ease-linear"
   >MENU</button>
   <transition
     enter-from-class="transform -translate-x-64"
