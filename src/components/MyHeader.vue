@@ -4,7 +4,7 @@
       :src="bgImg"
       class="w-full h-full object-cover object-center"
     >
-    <div class="absolute top-0 pt-18 bg-black bg-opacity-25 h-full w-full text-white flex items-center justify-center">
+    <div class="absolute top-0 pt-8 md:pt-18 bg-black bg-opacity-25 h-full w-full text-white flex items-center justify-center">
       <div class="mb-8 text-center">
         <h1 class="font-medium text-3xl">
           {{title}}
