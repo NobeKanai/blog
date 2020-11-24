@@ -1,5 +1,5 @@
 <template>
-  <nav class="hidden md:flex sticky top-0 z-50 justify-center py-3 bg-white bg-opacity-90 text-black">
+  <nav class="hidden md:flex fixed w-full top-0 z-50 justify-center py-3 bg-white bg-opacity-90 text-black">
     <div class="flex-1 container flex justify-between mx-24">
       <ul class="flex space-x-3 items-center">
         <h1 class="font-bold text-xl cursor-pointer">KANAI'S</h1>
@@ -44,7 +44,7 @@
       v-show="showAside"
       class="flex md:hidden fixed z-40 top-0 bottom-0 bg-black w-64"
     >
-      s
+
     </aside>
   </transition>
 </template>

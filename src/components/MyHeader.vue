@@ -2,7 +2,7 @@
   <header class="w-full relative h-64 sm:h-80 md:h-96 lg:h-104">
     <img
       :src="bgImg"
-      class="w-full h-full object-cover object-center -mt-18"
+      class="w-full h-full object-cover object-center"
     >
     <div class="absolute top-0 pt-18 bg-black bg-opacity-25 h-full w-full text-white flex items-center justify-center">
       <div class="mb-8 text-center">
@@ -15,12 +15,13 @@
   </header>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "MyHeader",
   props: {
     bgImg: {
-      type: String
+      type: String,
     },
     title: {
       type: String,
@@ -28,9 +29,9 @@ export default {
     },
     subtitle: {
       type: String,
-    }
-  }
-}
+    },
+  },
+});
 </script>
 
 <style>

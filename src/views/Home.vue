@@ -4,11 +4,25 @@
     :bgImg="bgImg"
     subtitle="Im waiting you for a long time"
   ></my-header>
-  <div class="mx-auto my-4 w-11/12 md:w-9/12 lg:w-1/2 space-y-4">
-    <card>
-      <h1>Nisi enim anim labore dolor eu ad ad sit consequat ea.</h1>
-    </card>
-  </div>
+
+  <body class="flex-1 flex flex-col">
+    <div class="flex-1 my-8 inner-container space-y-4">
+      <card>
+        <h1 class="font-medium text-2xl">Nisi enim anim labore dolor eu ad</h1>
+        <p class="my-3">Incididunt in incididunt reprehenderit nisi ea velit anim aute culpa enim eiusmod.</p>
+      </card>
+    </div>
+
+    <div class="inner-container my-8 flex justify-between">
+      <!-- 导航按钮 -->
+      <button class="nav-btn">
+        PREV
+      </button>
+      <button class="nav-btn">
+        NEXT
+      </button>
+    </div>
+  </body>
 </template>
 
 <script lang="ts">
@@ -29,3 +43,12 @@ export default defineComponent({
   },
 });
 </script>
+
+
+<style lang="sass">
+.inner-container
+  @apply w-11/12 md:w-9/12 lg:w-1/2 mx-auto
+
+.nav-btn
+  @apply px-8 py-2 border border-black rounded-full transition-colors hover:bg-gray-900 hover:text-white duration-300
+</style>
