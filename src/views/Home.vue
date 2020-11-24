@@ -18,7 +18,7 @@ export default defineComponent({
   },
   data() {
     return {
-      bgImg: "https://i.loli.net/2020/10/25/l4iaDnoy27cNpvF.jpg",
+      bgImg: "https://i.loli.net/2020/07/08/uxZm7gqCXtU43VI.png",
     };
   },
 });
