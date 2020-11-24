@@ -1,9 +1,8 @@
 <template>
-  <my-header
-    title="Title"
-    bgImg="https://i.loli.net/2020/07/08/uxZm7gqCXtU43VI.png"
-    subtitle="Im waiting you for a long time"
-  ></my-header>
+  <my-header bgImg="https://i.loli.net/2020/07/08/uxZm7gqCXtU43VI.png">
+    <h1>Blog Title</h1>
+    <p>Ullamco ut id excepteur cupidatat commodo officia eiusmod elit id qui.</p>
+  </my-header>
 
   <body class="flex-1 flex justify-center">
     <article class="article-container py-4 prose max-w-none">

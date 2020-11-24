@@ -1,9 +1,8 @@
 <template>
-  <my-header
-    title="Title"
-    :bgImg="bgImg"
-    subtitle="Im waiting you for a long time"
-  ></my-header>
+  <my-header :bgImg="bgImg">
+    <h1>KANAI'S BLOG</h1>
+    <p>Im waiting you for a long time</p>
+  </my-header>
 
   <body class="flex-1 flex flex-col">
     <div class="flex-1 my-8 inner-container space-y-4">
