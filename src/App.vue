@@ -1,7 +1,11 @@
 <template>
   <navbar />
   <div class="flex flex-col min-h-screen">
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <my-footer />
   </div>
 </template>

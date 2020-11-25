@@ -1,25 +1,38 @@
 <template>
-  <my-header :bgImg="bgImg">
-    <h1>KANAI'S BLOG</h1>
-    <p>Im waiting you for a long time</p>
+  <my-header :bgImg="core.bg_image">
+    <h1>{{ core.name }}</h1>
+    <p>{{ core.summary }}</p>
   </my-header>
 
   <body class="flex-1 flex flex-col">
     <div class="flex-1 my-8 inner-container space-y-4">
-      <card>
-        <h1 class="font-medium text-2xl">Nisi enim anim labore dolor eu ad</h1>
-        <p class="my-3">Incididunt in incididunt reprehenderit nisi ea velit anim aute culpa enim eiusmod.</p>
+      <card
+        v-for="p in pagination.items"
+        :key="p.id"
+        :to="`/p/`+p.id"
+        :bgImg="p.bg_image"
+      >
+        <h1 class="font-medium text-2xl">{{ p.title }}</h1>
+        <p class="my-3">{{ p.create_date }} · {{ p.category.name }} · {{ p.read_number }} Reads</p>
       </card>
     </div>
 
     <div class="inner-container my-8 flex justify-between">
       <!-- 导航按钮 -->
-      <button class="nav-btn">
+      <router-link
+        :to="{name:'PostList', params: {page: pagination.page - 1}}"
+        class="nav-btn"
+        v-show="pagination.has_prev"
+      >
         PREV
-      </button>
-      <button class="nav-btn">
+      </router-link>
+      <router-link
+        :to="{name:'PostList', params: {page: pagination.page + 1}}"
+        class="nav-btn ml-auto"
+        v-show="!pagination.has_next"
+      >
         NEXT
-      </button>
+      </router-link>
     </div>
   </body>
 </template>
@@ -28,6 +41,8 @@
 import { defineComponent } from "vue";
 import MyHeader from "@/components/MyHeader.vue";
 import Card from "@/components/Card.vue";
+import { Core, fetchCore } from "@/api";
+import usePostPagination from "@/composables/usePostPagination";
 
 export default defineComponent({
   name: "Home",
@@ -35,10 +50,19 @@ export default defineComponent({
     MyHeader,
     Card,
   },
+  setup() {
+    const { pagination } = usePostPagination();
+    return {
+      pagination,
+    };
+  },
   data() {
     return {
-      bgImg: "https://i.loli.net/2020/07/08/uxZm7gqCXtU43VI.png",
+      core: {} as Core,
     };
+  },
+  async created() {
+    this.core = await fetchCore();
   },
 });
 </script>

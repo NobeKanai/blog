@@ -3,9 +3,10 @@ import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/page/:page(\\d+)?',
+    name: 'PostList',
+    component: Home,
+    alias: "/:page(\\d+)?",
   },
   {
     path: '/p/:id',

@@ -2,7 +2,10 @@
   <nav class="hidden md:flex fixed w-full top-0 z-50 justify-center py-3 bg-white bg-opacity-90 text-black">
     <div class="flex-1 container flex justify-between mx-24">
       <ul class="flex space-x-3 items-center">
-        <h1 class="font-bold text-xl cursor-pointer">KANAI'S</h1>
+        <router-link
+          to="/"
+          class="font-bold text-xl"
+        >KANAI'S</router-link>
         <li class=" relative">
           <a
             href="#"
@@ -20,11 +23,15 @@
         <li>归档</li>
       </ul>
       <ul class="flex space-x-2">
-        <li class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-900 hover:text-white transition ease-linear duration-300">
-          <i class="fab fa-github"></i>
-        </li>
-        <li class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-900 hover:text-white transition ease-linear duration-300">
-          <i class="fas fa-music"></i>
+        <li
+          v-for="el in externalLinks"
+          :key="el.id"
+          class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-900 hover:text-white transition ease-linear duration-300"
+        >
+          <a
+            :href="el.href"
+            target="_blank"
+          ><i :class="el.icon"></i></a>
         </li>
       </ul>
     </div>
@@ -51,15 +58,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { ExternalLink, fetchExternalLinks } from "@/api";
 
 export default defineComponent({
   name: "Navbar",
   props: {},
   data() {
     return {
+      externalLinks: [] as Array<ExternalLink>,
       showDropdown: false,
       showAside: false,
     };
+  },
+  async created() {
+    this.externalLinks = await fetchExternalLinks();
   },
 });
 </script>
