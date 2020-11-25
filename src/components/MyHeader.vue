@@ -3,7 +3,9 @@
     <img
       v-if="bgImg"
       :src="bgImg"
-      class="w-full h-full object-cover object-center"
+      @load="loaded=true"
+      class="w-full h-full object-cover object-center transition duration-300 ease-linear"
+      :class="{'opacity-0' : !loaded}"
     >
     <div
       class="absolute top-0 pt-8 md:pt-18 bg-black bg-opacity-25 h-full w-full text-white flex items-center justify-center"
@@ -20,6 +22,11 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "MyHeader",
+  data() {
+    return {
+      loaded: false,
+    };
+  },
   props: {
     bgImg: {
       type: String,
@@ -32,8 +39,6 @@ export default defineComponent({
 .header-container
   h1
     @apply font-medium text-3xl mb-1
-  p
-    @apply font-normal
 
 .no-bg
   @apply bg-gray-100 text-black #{!important}
