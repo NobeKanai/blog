@@ -12,8 +12,13 @@ export interface Core {
 }
 
 
+
 export const fetchCore = async () => {
-    let result = await fetch(baseURL + '/')
+    const neverVisit = !localStorage.getItem('hasVisited')
+    let result = await fetch(baseURL + '/' + (neverVisit ? '?never=1' : ''))
     let externalLinks = await result.json()
+
+    // 设置此浏览器为已经访问过
+    localStorage.setItem('hasVisited', 'true')
     return externalLinks as Core
 }
