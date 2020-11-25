@@ -29,7 +29,7 @@
       <router-link
         :to="{name:'PostList', params: {page: pagination.page + 1}}"
         class="nav-btn ml-auto"
-        v-show="!pagination.has_next"
+        v-show="pagination.has_next"
       >
         NEXT
       </router-link>

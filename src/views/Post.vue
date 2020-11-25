@@ -1,12 +1,19 @@
 <template>
-  <my-header bgImg="https://i.loli.net/2020/07/08/uxZm7gqCXtU43VI.png">
-    <h1>Blog Title</h1>
-    <p>Ullamco ut id excepteur cupidatat commodo officia eiusmod elit id qui.</p>
+  <my-header
+    v-if="post.id"
+    :bgImg="post.bg_image"
+  >
+    <h1>{{ post.title }}</h1>
+    <p>
+      {{ post.create_date }} · <router-link to="/">{{ post.category.name }}</router-link> · {{ post.read_number }} Reads
+    </p>
   </my-header>
 
   <body class="flex-1 flex justify-center">
-    <article class="article-container py-4 prose max-w-none">
-      <p>Id voluptate velit culpa aliqua ea ex enim sunt occaecat in ipsum veniam ex nulla. Anim fugiat aute nostrud mollit consectetur laborum. Tempor duis incididunt magna labore aliquip culpa eiusmod. Eu incididunt non culpa aute veniam. Labore anim et nulla dolor non aute cillum ex incididunt. Sunt proident eu labore ullamco fugiat aliqua duis incididunt ut commodo.</p>
+    <article
+      class="article-container py-4 prose max-w-none"
+      v-html="post.body"
+    >
     </article>
   </body>
 </template>

@@ -24,7 +24,7 @@ const colors = [
   "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500",
   "bg-gradient-to-r from-teal-400 to-blue-500",
   "bg-gradient-to-r from-teal-400 to-blue-500",
-  "from-pink-500 focus:to-orange-500",
+  "bg-gradient-to-r from-pink-500 to-orange-500",
 ];
 
 import { defineComponent } from "vue";
