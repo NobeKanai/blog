@@ -9,15 +9,21 @@
         <li class=" relative">
           <a
             href="#"
-            @focus="showDropdown = !showDropdown"
-            @focusout="showDropdown = false"
+            @click="showDropdown = !showDropdown"
           >分类 <i class="fas fa-angle-down"></i></a>
           <ul
             v-show="showDropdown"
             class="absolute bg-white bg-opacity-95 w-48 py-2 rounded"
           >
-            <li class="px-4 py-2 hover:bg-gray-200">分类一</li>
-            <li class="px-4 py-2 hover:bg-gray-200">分类二</li>
+            <li
+              v-for="ct in categories"
+              :key="ct.id"
+              @click="showDropdown = false"
+              class="px-4 py-2 hover:bg-gray-200"
+            >
+              <router-link :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}">{{ ct.name }}</router-link>
+            </li>
+
           </ul>
         </li>
         <li>归档</li>
@@ -58,7 +64,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ExternalLink, fetchExternalLinks } from "@/api";
+import {
+  Category,
+  ExternalLink,
+  fetchCategories,
+  fetchExternalLinks,
+} from "@/api";
 
 export default defineComponent({
   name: "Navbar",
@@ -66,12 +77,14 @@ export default defineComponent({
   data() {
     return {
       externalLinks: [] as Array<ExternalLink>,
+      categories: [] as Array<Category>,
       showDropdown: false,
       showAside: false,
     };
   },
   async created() {
     this.externalLinks = await fetchExternalLinks();
+    this.categories = await fetchCategories();
   },
 });
 </script>

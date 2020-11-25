@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
+import PostListCate from '../views/PostListCate.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -7,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'PostList',
     component: Home,
     alias: "/:page(\\d+)?",
+  },
+  {
+    path: '/category/:category(\\d+)/page/:page(\\d+)',
+    name: 'PostListByCategory',
+    component: PostListCate,
   },
   {
     path: '/p/:id',

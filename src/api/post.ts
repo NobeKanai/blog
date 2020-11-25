@@ -1,6 +1,8 @@
 import { baseURL } from '.'
+import { Category } from './category'
 
 export interface PostPagination {
+    category: Category;
     has_next: boolean;
     has_prev: boolean;
     items: Post[];
@@ -21,15 +23,12 @@ export interface Post {
     title: string;
 }
 
-export interface Category {
-    id: number;
-    name: string;
-}
 
 
 
-export const fetchPosts = async (page: number | string, per_page: number | string = 5) => {
-    const uri = baseURL + `/posts/?page=${page || 1}&per_page=${per_page}`
+
+export const fetchPosts = async (page: number | string, per_page: number | string = 5, category: number | string = "") => {
+    const uri = baseURL + `/posts/?page=${page || 1}&per_page=${per_page}&category=${category}`
 
     let result = await fetch(uri)
     let posts = await result.json()
