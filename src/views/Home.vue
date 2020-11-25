@@ -5,7 +5,13 @@
   </my-header>
 
   <body class="flex-1 flex flex-col">
-    <div class="flex-1 my-8 inner-container space-y-4">
+    <transition-group
+      tag="div"
+      class="flex-1 my-8 inner-container space-y-4"
+      enter-from-class="scale-x-0"
+      enter-class="duration-500 ease-linear"
+      appear
+    >
       <card
         v-for="p in pagination.items"
         :key="p.id"
@@ -15,7 +21,7 @@
         <h1 class="font-medium text-2xl">{{ p.title }}</h1>
         <p class="my-3">{{ p.create_date }} · {{ p.category.name }} · {{ p.read_number }} Reads</p>
       </card>
-    </div>
+    </transition-group>
 
     <div class="inner-container my-8 flex justify-between">
       <!-- 导航按钮 -->
