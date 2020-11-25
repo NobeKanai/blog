@@ -3,7 +3,9 @@
     <img
       v-if="bgImg"
       :src="bgImg"
-      class="w-full h-full object-cover object-center"
+      @load="loaded=true"
+      class="w-full h-full object-cover object-center transition duration-300 ease-linear"
+      :class="{'opacity-0' : !loaded}"
     >
     <div
       v-else
@@ -30,6 +32,11 @@ const colors = [
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "Card",
+  data() {
+    return {
+      loaded: false,
+    };
+  },
   props: {
     bgImg: {
       type: String,
