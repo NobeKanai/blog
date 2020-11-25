@@ -1,5 +1,5 @@
 import { fetchPosts, Post } from '@/api/post';
-import { computed, onActivated, onDeactivated, reactive, watch } from 'vue';
+import { computed, onActivated, onDeactivated, onMounted, reactive, watch, WatchStopHandle } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default function usePostPagination (category?: number, tags?: string) {
@@ -12,7 +12,7 @@ export default function usePostPagination (category?: number, tags?: string) {
     const pagination = reactive({
         has_prev: false,
         has_next: false,
-        page: page.value,
+        page: -1,
         pages: 0,
         total: 0,
         items: [] as Array<Post>,
@@ -29,15 +29,11 @@ export default function usePostPagination (category?: number, tags?: string) {
         pagination.items = data.items
     }
 
-    const watchCallBack = (newVal: number, oldVal?: number) => {
-        if (newVal !== oldVal)
-            getPosts()
-    }
-
-    let stopWatchHandle = watch(page, watchCallBack, { immediate: true })
+    let stopWatchHandle: WatchStopHandle
 
     onActivated(() => {
-        stopWatchHandle = watch(page, watchCallBack)
+        if (page.value !== pagination.page) getPosts()
+        stopWatchHandle = watch(page, getPosts)
     })
 
     onDeactivated(() => {

@@ -12,13 +12,37 @@
 </template>
 
 <script lang="ts">
+import { fetchPost, Post } from "@/api/post";
 import MyHeader from "@/components/MyHeader.vue";
 
-import { defineComponent } from "vue";
+import { defineComponent, WatchStopHandle } from "vue";
 export default defineComponent({
   name: "Post",
   components: {
     MyHeader,
+  },
+  data() {
+    return {
+      post: {} as Post,
+      closeWacth: {} as WatchStopHandle,
+    };
+  },
+  activated() {
+    if (parseInt(this.postId) !== this.post.id) this.getPost();
+    this.closeWacth = this.$watch(this.postId, this.getPost);
+  },
+  deactivated() {
+    this.closeWacth();
+  },
+  computed: {
+    postId(): string {
+      return this.$route.params.id as string;
+    },
+  },
+  methods: {
+    async getPost() {
+      this.post = await fetchPost(this.$route.params.id as string);
+    },
   },
 });
 </script>

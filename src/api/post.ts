@@ -28,15 +28,15 @@ export interface Category {
 
 
 
-export const fetchPosts = async (page: number, per_page: number = 5) => {
-    const uri = baseURL + `/posts/?page=${page}&per_page=${per_page}`
+export const fetchPosts = async (page: number | string, per_page: number | string = 5) => {
+    const uri = baseURL + `/posts/?page=${page || 1}&per_page=${per_page}`
 
     let result = await fetch(uri)
     let posts = await result.json()
     return posts as PostPagination
 }
 
-export const fetchPost = async (id: number) => {
+export const fetchPost = async (id: number | string) => {
     let result = await fetch(baseURL + '/posts/' + id)
     let post = await result.json()
     return post as Post
