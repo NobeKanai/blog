@@ -1,5 +1,5 @@
 <template>
-  <router-link class="w-full select-none h-44 md:h-52 lg:h-60 flex items-center rounded-lg overflow-hidden relative cursor-pointer transform hover:scale-105 hover:translate-y-1 transition-transform duration-300">
+  <router-link class="w-full select-none h-44 md:h-52 lg:h-60 flex items-center rounded-lg overflow-hidden relative cursor-pointer transform hover:scale-105 hover:shadow-xl hover:translate-y-1 transition duration-300">
     <img
       v-if="bgImg"
       :src="bgImg"

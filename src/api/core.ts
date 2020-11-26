@@ -12,8 +12,7 @@ export interface Core {
 }
 
 
-
-export const fetchCore = async () => {
+const __fetchCore = async () => {
     const neverVisit = !localStorage.getItem('hasVisited')
     let result = await fetch(baseURL + '/' + (neverVisit ? '?never=1' : ''))
     let externalLinks = await result.json()
@@ -21,4 +20,15 @@ export const fetchCore = async () => {
     // 设置此浏览器为已经访问过
     localStorage.setItem('hasVisited', 'true')
     return externalLinks as Core
+}
+
+let core: Core
+
+// core is only allowed fetch once
+export const fetchCore = async () => {
+    if (core) return core
+    else {
+        core = await __fetchCore()
+        return core
+    }
 }
