@@ -1,5 +1,5 @@
 <template>
-  <nav class="hidden md:flex fixed w-full top-0 z-50 justify-center py-3 bg-white bg-opacity-90 text-black">
+  <nav class="hidden md:flex fixed w-full top-0 z-50 justify-center py-3 bg-white bg-opacity-95 text-black">
     <div class="flex-1 container flex justify-between mx-24">
       <ul class="flex space-x-3 items-center">
         <router-link
@@ -13,16 +13,20 @@
           >分类 <i class="fas fa-angle-down"></i></a>
           <ul
             v-show="showDropdown"
-            class="absolute bg-white bg-opacity-95 w-48 py-2 rounded"
+            @mouseleave="showDropdown = false"
+            class="absolute bg-white w-48 py-2 rounded"
           >
-            <router-link
+            <li
               v-for="ct in categories"
               :key="ct.id"
-              tag="li"
               @click="showDropdown = false"
-              class="block px-4 py-2 hover:bg-gray-200"
-              :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}"
-            >{{ ct.name }}</router-link>
+            >
+              <router-link
+                class="block px-4 py-2 hover:bg-gray-200"
+                :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}"
+              >{{ ct.name }}</router-link>
+            </li>
+
           </ul>
         </li>
         <li>归档</li>
