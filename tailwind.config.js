@@ -17,7 +17,16 @@ module.exports = {
       colors: {
         teal: colors.teal,
         orange: colors.orange,
-      }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': false,
+            'code::after': false,
+            "pre code::after": false,
+          },
+        },
+      },
     },
   },
   variants: {

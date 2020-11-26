@@ -15,15 +15,14 @@
             v-show="showDropdown"
             class="absolute bg-white bg-opacity-95 w-48 py-2 rounded"
           >
-            <li
+            <router-link
               v-for="ct in categories"
               :key="ct.id"
+              tag="li"
               @click="showDropdown = false"
-              class="px-4 py-2 hover:bg-gray-200"
-            >
-              <router-link :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}">{{ ct.name }}</router-link>
-            </li>
-
+              class="block px-4 py-2 hover:bg-gray-200"
+              :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}"
+            >{{ ct.name }}</router-link>
           </ul>
         </li>
         <li>归档</li>

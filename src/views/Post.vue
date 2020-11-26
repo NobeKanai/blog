@@ -11,7 +11,7 @@
 
   <body class="flex-1 flex justify-center">
     <article
-      class="article-container py-4 prose max-w-none"
+      class="article-container py-4 prose prose-teal max-w-none"
       v-html="post.body"
     >
     </article>
@@ -21,8 +21,9 @@
 <script lang="ts">
 import { fetchPost, Post } from "@/api/post";
 import MyHeader from "@/components/MyHeader.vue";
-
 import { defineComponent, WatchStopHandle } from "vue";
+const postLoadedEvent = new Event("post-loaded");
+
 export default defineComponent({
   name: "Post",
   components: {
@@ -49,6 +50,9 @@ export default defineComponent({
   methods: {
     async getPost() {
       this.post = await fetchPost(this.$route.params.id as string);
+      this.$nextTick(() => {
+        dispatchEvent(postLoadedEvent);
+      });
     },
   },
 });
