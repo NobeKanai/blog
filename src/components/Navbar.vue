@@ -7,10 +7,7 @@
           class="font-bold text-xl"
         >KANAI'S</router-link>
         <li class=" relative">
-          <a
-            href="#"
-            @click="showDropdown = !showDropdown"
-          >分类 <i class="fas fa-angle-down"></i></a>
+          <button @click="showDropdown = !showDropdown">分类 <i class="fas fa-angle-down"></i></button>
           <ul
             v-show="showDropdown"
             @mouseleave="showDropdown = false"

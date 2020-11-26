@@ -6,9 +6,10 @@
   <body class="flex-1 flex flex-col">
     <transition-group
       tag="div"
-      class="flex-1 my-8 inner-container space-y-4"
+      class="flex-1 my-8 inner-container space-y-4 transition-transform transform duration-300 ease-linear"
       enter-from-class="scale-x-0"
-      enter-class="duration-500 ease-linear"
+      leave-to-class="scale-x-0"
+      move-class="duration-500"
       appear
     >
       <card
@@ -71,8 +72,8 @@ export default defineComponent({
 
 <style lang="sass">
 .inner-container
-    @apply w-11/12 md:w-9/12 lg:w-1/2 mx-auto
+  @apply w-11/12 md:w-9/12 lg:w-1/2 mx-auto
 
 .nav-btn
-    @apply px-8 py-2 border border-black rounded-full transition-colors hover:bg-gray-900 hover:text-white duration-300
+  @apply px-8 py-2 border border-black rounded-full transition-colors hover:bg-gray-900 hover:text-white duration-300
 </style>
