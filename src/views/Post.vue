@@ -5,7 +5,10 @@
   >
     <h1>{{ post.title }}</h1>
     <p>
-      {{ post.create_date }} · <router-link :to="{name:'PostListByCategory', params: {category: post.category.id, page: 1}}">{{ post.category.name }}</router-link> · {{ post.read_number }} Reads
+      {{ post.create_date }} · <router-link
+        class="text-teal-700 border-b-2 border-transparent hover:border-teal-700 transition"
+        :to="{name:'PostListByCategory', params: {category: post.category.id, page: 1}}"
+      >{{ post.category.name }}</router-link> · {{ post.read_number }} Reads
     </p>
   </my-header>
 

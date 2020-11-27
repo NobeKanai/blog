@@ -52,7 +52,7 @@
   >
     <aside
       v-show="showAside"
-      class="flex flex-col md:hidden fixed z-40 top-0 bottom-0 bg-black bg-opacity-95 w-64"
+      class="flex flex-col md:hidden fixed z-40 top-0 bottom-0 bg-gray-900 w-64"
     >
       <div class="py-10 mx-auto">
         <img
@@ -72,13 +72,13 @@
         </a>
         <ul
           v-show="showCategories"
-          class="bg-gray-800 flex px-4 py-4 justify-between"
+          class="bg-black bg-opacity-95 p-4 grid grid-cols-2 gap-4"
         >
 
           <router-link
             v-for="ct in categories"
             :key="ct.id"
-            class="px-8 py-4 bg-black rounded"
+            class="py-4 bg-gray-900 hover:bg-gray-800 transition-colors duration-300 ease-linear rounded-lg uppercase truncate px-1"
             :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}"
           >{{ ct.name }}</router-link>
 
@@ -137,5 +137,5 @@ export default defineComponent({
 .show
   @apply translate-x-52 bg-black text-white #{!important}
 .link
-  @apply block py-3 text-lg hover:bg-gray-900 transition duration-300 ease-linear cursor-pointer
+  @apply block py-3 text-lg hover:bg-gray-800 transition duration-300 ease-linear cursor-pointer
 </style>
