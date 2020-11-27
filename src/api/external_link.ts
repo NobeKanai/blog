@@ -1,3 +1,4 @@
+import memoize from 'lodash.memoize'
 import { baseURL } from '.'
 
 export interface ExternalLink {
@@ -7,8 +8,8 @@ export interface ExternalLink {
 }
 
 
-export const fetchExternalLinks = async () => {
+export const fetchExternalLinks = memoize(async () => {
     let result = await fetch(baseURL + '/external_links')
     let externalLinks = await result.json()
     return externalLinks as Array<ExternalLink>
-}
+})

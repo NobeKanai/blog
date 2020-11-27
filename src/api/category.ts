@@ -1,3 +1,4 @@
+import memoize from 'lodash.memoize'
 import { baseURL } from '.'
 
 export interface CategoryPG {
@@ -10,8 +11,8 @@ export interface Category {
 }
 
 
-export const fetchCategories = async () => {
+export const fetchCategories = memoize(async () => {
     let result = await fetch(baseURL + '/categories/')
     let categories = await result.json()
     return (categories as CategoryPG).items
-}
+})

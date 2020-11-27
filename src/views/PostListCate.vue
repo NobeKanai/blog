@@ -2,6 +2,7 @@
   <post-list>
     <template v-slot:default="slotProps">
       <h1>Category: {{ slotProps.category.name }}</h1>
+      {{ setSeo(slotProps.category.name) }}
     </template>
   </post-list>
 
@@ -15,6 +16,12 @@ export default defineComponent({
   name: "PostListCate",
   components: {
     PostList,
+  },
+  methods: {
+    setSeo(typename?: string): string {
+      if (typename) document.title = "Category: " + typename;
+      return "";
+    },
   },
 });
 </script>

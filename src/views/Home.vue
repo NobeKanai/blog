@@ -23,6 +23,10 @@ export default defineComponent({
   },
   async created() {
     this.core = await fetchCore();
+    document.title = this.core.name;
+  },
+  activated() {
+    if (this.core.name) document.title = this.core.name;
   },
 });
 </script>

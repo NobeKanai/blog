@@ -38,8 +38,10 @@ export default defineComponent({
       closeWacth: {} as WatchStopHandle,
     };
   },
-  activated() {
-    if (parseInt(this.postId) !== this.post.id) this.getPost();
+  async activated() {
+    if (parseInt(this.postId) !== this.post.id) await this.getPost();
+    document.title = this.post.seo_title || this.post.title;
+
     this.closeWacth = this.$watch(this.postId, this.getPost);
   },
   deactivated() {
