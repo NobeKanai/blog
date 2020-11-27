@@ -11,6 +11,7 @@
     "@tailwindcss/typography": "^0.3.1",
     "@types/lodash.memoize": "^4.1.6",
     "core-js": "^3.6.5",
+    "gsap": "^3.5.1",
     "lodash.memoize": "^4.1.2",
     "tailwindcss": "^2.0.1-compat",
     "vue": "^3.0.0",

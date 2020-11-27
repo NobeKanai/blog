@@ -99,6 +99,13 @@
       </div>
     </aside>
   </transition>
+
+  <div
+    v-if="showAside"
+    @click="showAside=false"
+    class="fixed w-full h-full cursor-pointer z-30"
+  >
+  </div>
 </template>
 
 <script lang="ts">

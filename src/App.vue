@@ -6,6 +6,7 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
+    <to-top />
     <my-footer />
   </div>
 </template>
@@ -13,6 +14,7 @@
 <script lang="ts">
 import Navbar from "@/components/Navbar.vue";
 import MyFooter from "@/components/MyFooter.vue";
+import ToTop from "@/components/ToTop.vue";
 
 import { defineComponent } from "vue";
 export default defineComponent({
@@ -20,6 +22,7 @@ export default defineComponent({
   components: {
     Navbar,
     MyFooter,
+    ToTop,
   },
 });
 </script>
