@@ -44,7 +44,7 @@ export const fetchPosts = async (page: number | string, per_page: number | strin
 }
 
 export const fetchPost = async (id: number | string) => {
-    let result = await fetch(baseURL + '/posts/' + id + `${hasReaded(id) ? '' : 'never=1'}`)
+    let result = await fetch(baseURL + '/posts/' + id + `${hasReaded(id) ? '' : '?never=1'}`)
     let post = await result.json()
     return post as Post
 }
