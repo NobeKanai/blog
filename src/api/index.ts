@@ -4,4 +4,5 @@ export const generalArgsResolver = (...args: any) => JSON.stringify(args)
 
 export * from './core'
 export * from './external_link'
+export * from './friend_link'
 export * from './category'

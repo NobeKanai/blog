@@ -26,7 +26,10 @@
 
           </ul>
         </li>
-        <li>归档</li>
+        <router-link
+          tag="li"
+          :to="{name:'Friends'}"
+        >友链</router-link>
       </ul>
       <ul class="flex space-x-2">
         <a
@@ -83,6 +86,10 @@
           >{{ ct.name }}</router-link>
 
         </ul>
+        <router-link
+          class="link"
+          to="/friends"
+        >友链</router-link>
       </div>
       <div class="bg-black py-2">
         <div class="flex justify-center space-x-2">

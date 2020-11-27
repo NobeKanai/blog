@@ -18,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/p/:id',
     name: 'Post',
     component: () => import('../views/Post.vue')
+  },
+  {
+    path: '/friends',
+    name: 'Friends',
+    component: () => import('../views/FriendLinks.vue')
   }
 ]
 
