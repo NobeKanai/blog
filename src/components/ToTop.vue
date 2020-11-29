@@ -7,7 +7,7 @@
     <div
       @click="toTop"
       v-show="show"
-      class="fixed w-14 h-14 md:w-16 md:h-16 bottom-4 transform transition-all duration-300 right-4 rounded-full border border-gray-100 shadow hover:scale-110 hover:shadow-xl bg-gray-50 text-gray-600 hover:text-gray-900 grid place-items-center"
+      class="fixed w-14 h-14 md:w-16 md:h-16 bottom-4 transform transition-all duration-300 right-4 rounded-full border border-gray-100 shadow hover:scale-110 hover:shadow-xl bg-gray-50 text-gray-600 hover:text-teal-500 grid place-items-center"
     >
       <i class="fa fa-angle-up"></i>
     </div>

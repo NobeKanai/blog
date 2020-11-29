@@ -19,7 +19,7 @@
         :bgImg="p.bg_image"
       >
         <h1 class="font-medium text-2xl">{{ p.title }}</h1>
-        <p class="my-3">{{ p.create_date }} · {{ p.category.name }} · {{ p.read_number }} Reads</p>
+        <p class="my-3">{{ p.create_date }} · <span class="uppercase">{{ p.category.name }}</span> · {{ p.read_number }} Reads</p>
       </card>
     </transition-group>
 

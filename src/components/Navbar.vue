@@ -19,7 +19,7 @@
               @click="showDropdown = false"
             >
               <router-link
-                class="block px-4 py-2 hover:bg-gray-200"
+                class="block px-4 py-2 hover:bg-gray-200 uppercase"
                 :to="{name:'PostListByCategory', params: {category: ct.id, page: 1}}"
               >{{ ct.name }}</router-link>
             </li>

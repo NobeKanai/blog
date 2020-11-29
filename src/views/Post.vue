@@ -6,13 +6,13 @@
     <h1>{{ post.title }}</h1>
     <p>
       {{ post.create_date }} · <router-link
-        class="text-teal-500 border-b-2 border-transparent hover:border-teal-500 transition"
+        class="text-teal-500 border-b-2 border-transparent hover:border-teal-500 transition uppercase"
         :to="{name:'PostListByCategory', params: {category: post.category.id, page: 1}}"
       >{{ post.category.name }}</router-link> · {{ post.read_number }} Reads
     </p>
   </my-header>
 
-  <body class="flex-1 flex justify-center">
+  <body class="flex-1 flex justify-center mb-12">
     <article
       class="article-container py-4 prose prose-teal max-w-none"
       v-html="post.body"
