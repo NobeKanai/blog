@@ -51,5 +51,5 @@ jobs:
           source: "dist/*"
           target: "v2deploy/blog/"
           strip_components: true
-          overwrite: true
-          # rm: true
+          # overwrite: true
+          rm: true

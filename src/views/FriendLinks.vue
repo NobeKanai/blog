@@ -6,7 +6,7 @@
   <body class="flex-1">
     <div class="w-11/12 md:w-9/12 lg:w-7/12 mx-auto | my-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       <a
-        class="bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow rounded transition duration-300 ease-linear text-gray-700"
+        class="bg-white border flex flex-col justify-between border-gray-200 overflow-hidden shadow-sm hover:shadow rounded transition duration-300 ease-linear text-gray-700"
         v-for="f in friendLinks"
         target="_blank"
         :key="f.id"
