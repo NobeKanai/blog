@@ -924,6 +924,13 @@
   resolved "https://registry.npm.taobao.org/@soda/get-current-script/download/@soda/get-current-script-1.0.2.tgz?cache=0&sync_timestamp=1592273074614&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40soda%2Fget-current-script%2Fdownload%2F%40soda%2Fget-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha1-pTUV2yXYA4N0OBtzryC7Ty5QjYc=
 
+"@tailwindcss/forms@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.npm.taobao.org/@tailwindcss/forms/download/@tailwindcss/forms-0.2.1.tgz#3244b185854fae1a7cbe8d2456314d8b2d98cf43"
+  integrity sha1-MkSxhYVPrhp8vo0kVjFNiy2Yz0M=
+  dependencies:
+    mini-svg-data-uri "^1.2.3"
+
 "@tailwindcss/typography@^0.3.1":
   version "0.3.1"
   resolved "https://registry.npm.taobao.org/@tailwindcss/typography/download/@tailwindcss/typography-0.3.1.tgz#253ce580c8e06b6163d9a288edd24f25e1d0dfee"
@@ -5772,6 +5779,11 @@ mini-css-extract-plugin@^0.9.0:
     normalize-url "1.9.1"
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
+
+mini-svg-data-uri@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/mini-svg-data-uri/download/mini-svg-data-uri-1.2.3.tgz#e16baa92ad55ddaa1c2c135759129f41910bc39f"
+  integrity sha1-4Wuqkq1V3aocLBNXWRKfQZELw58=
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"

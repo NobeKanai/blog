@@ -14,10 +14,35 @@
 
   <body class="flex-1 flex justify-center mb-12">
     <article
-      class="article-container py-4 prose prose-teal max-w-none"
+      v-if="!post.needs_verify"
+      class="article-container prose prose-teal max-w-none"
       v-html="post.body"
     >
     </article>
+    <div
+      v-else
+      class="article-container flex flex-col items-center justify-center"
+    >
+      <transition enter-from-class="scale-0">
+        <p
+          v-if="showWrongPasswordTip"
+          class="transform transition"
+        >
+          WRONG PASSWORD!!!
+        </p>
+      </transition>
+      <input
+        class="w-full sm:w-11/12 md:w-8/12 lg:w-6/12"
+        type="password"
+        placeholder="Enter the password to unlock this post"
+        @keyup.enter="verifyPassword"
+        v-model="password"
+      >
+      <button
+        @click="verifyPassword"
+        class="border border-black rounded-full px-8 py-2 hover:bg-gray-900 hover:text-gray-50 transition duration-300 ease-linear mt-2"
+      >SUBMIT</button>
+    </div>
   </body>
 </template>
 
@@ -34,11 +59,14 @@ export default defineComponent({
   },
   data() {
     return {
+      password: "",
+      showWrongPasswordTip: false,
       post: {} as Post,
       closeWacth: {} as WatchStopHandle,
     };
   },
   async activated() {
+    this.password = "";
     if (parseInt(this.postId) !== this.post.id) await this.getPost();
     document.title = this.post.seo_title || this.post.title;
 
@@ -53,8 +81,19 @@ export default defineComponent({
     },
   },
   methods: {
+    async verifyPassword() {
+      if (!this.password) return;
+      this.showWrongPasswordTip = false;
+      await this.getPost();
+      if (this.post.needs_verify) {
+        this.showWrongPasswordTip = true;
+      }
+    },
     async getPost() {
-      this.post = await fetchPost(this.$route.params.id as string);
+      this.post = await fetchPost(
+        this.$route.params.id as string,
+        this.password
+      );
       this.$nextTick(() => {
         dispatchEvent(postLoadedEvent);
       });
@@ -65,5 +104,5 @@ export default defineComponent({
 
 <style lang="sass">
 .article-container
-  @apply w-11/12 md:w-10/12 lg:w-8/12 xl:w-7/12
+  @apply w-11/12 md:w-10/12 lg:w-8/12 xl:w-7/12 py-4
 </style>

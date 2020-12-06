@@ -22,6 +22,7 @@ export interface Post {
     subtitle: string;
     tags: Category[];
     title: string;
+    needs_verify: boolean;
 }
 
 function hasReaded (id: number | string): boolean {
@@ -45,8 +46,16 @@ export const fetchPosts = memorize(async (page: number | string, per_page: numbe
 }, generalArgsResolver)
 
 
-export const fetchPost = memorize(async (id: number | string) => {
-    let result = await fetch(baseURL + '/posts/' + id + `${hasReaded(id) ? '' : '?never=1'}`)
+export const fetchPost = memorize(async (id: number | string, password?: string) => {
+    let url = baseURL + '/posts/' + id
+
+    if (!hasReaded(id) || password)
+        url += '?'
+    if (!hasReaded(id))
+        url += 'never=1'
+    if (password)
+        url += 'password=' + password
+    let result = await fetch(url)
     let post = await result.json()
     return post as Post
-})
+}, generalArgsResolver)
