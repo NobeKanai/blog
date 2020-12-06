@@ -52,9 +52,9 @@ export const fetchPost = memorize(async (id: number | string, password?: string)
     if (!hasReaded(id) || password)
         url += '?'
     if (!hasReaded(id))
-        url += 'never=1'
+        url += '&never=1'
     if (password)
-        url += 'password=' + password
+        url += '&password=' + password
     let result = await fetch(url)
     let post = await result.json()
     return post as Post
