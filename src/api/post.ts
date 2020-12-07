@@ -25,15 +25,20 @@ export interface Post {
     needs_verify: boolean;
 }
 
-function hasReaded (id: number | string): boolean {
-    const hasReadedList: Array<number> = JSON.parse(localStorage.getItem('hasReaded') || "[]")
+const hasReadedList: Array<number> = JSON.parse(localStorage.getItem('hasReaded') || "[]")
+
+
+function hasRead (id: number | string): boolean {
     const idi = Number(id);
     if (hasReadedList.includes(idi)) return true
-    else {
-        hasReadedList.unshift(idi)
-        localStorage.setItem("hasReaded", JSON.stringify(hasReadedList))
+    else
         return false
-    }
+}
+
+function setHasRead (id: number | string) {
+    const idi = Number(id);
+    hasReadedList.unshift(idi)
+    localStorage.setItem("hasReaded", JSON.stringify(hasReadedList))
 }
 
 
@@ -49,13 +54,14 @@ export const fetchPosts = memorize(async (page: number | string, per_page: numbe
 export const fetchPost = memorize(async (id: number | string, password?: string) => {
     let url = baseURL + '/posts/' + id
 
-    if (!hasReaded(id) || password)
+    if (!hasRead(id) || password)
         url += '?'
-    if (!hasReaded(id))
+    if (!hasRead(id))
         url += '&never=1'
     if (password)
         url += '&password=' + password
     let result = await fetch(url)
-    let post = await result.json()
-    return post as Post
+    let post: Post = await result.json()
+    if (!hasRead(id) && !post.needs_verify) setHasRead(id)
+    return post
 }, generalArgsResolver)
