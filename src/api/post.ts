@@ -53,14 +53,14 @@ export const fetchPosts = memorize(async (page: number | string, per_page: numbe
 
 export const fetchPost = memorize(async (id: number | string, password?: string) => {
     let url = baseURL + '/posts/' + id
+    let queryString = new URLSearchParams()
 
-    if (!hasRead(id) || password)
-        url += '?'
     if (!hasRead(id))
-        url += '&never=1'
+        queryString.append("never", "1")
     if (password)
-        url += '&password=' + password
-    let result = await fetch(url)
+        queryString.append("password", password)
+
+    let result = await fetch(url + '?' + queryString.toString())
     let post: Post = await result.json()
     if (!hasRead(id) && !post.needs_verify) setHasRead(id)
     return post
