@@ -139,7 +139,7 @@ export default defineComponent({
       showCategories: false,
     };
   },
-  async created() {
+  async mounted() {
     this.externalLinks = await fetchExternalLinks();
     this.categories = await fetchCategories();
     this.core = await fetchCore();

@@ -21,7 +21,7 @@ export default defineComponent({
       core: {} as Core,
     };
   },
-  async created() {
+  async mounted() {
     this.core = await fetchCore();
     document.title = this.core.name;
   },

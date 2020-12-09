@@ -39,7 +39,7 @@ export default defineComponent({
       friendLinks: [] as Array<FriendLink>,
     };
   },
-  async created() {
+  async mounted() {
     this.friendLinks = await fetchFriendsLink();
   },
   activated() {
