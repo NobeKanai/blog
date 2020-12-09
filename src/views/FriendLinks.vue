@@ -1,5 +1,5 @@
 <template>
-  <my-header bgImg="https://i.loli.net/2020/11/27/xSJvmz34lrp9nZ7.jpg">
+  <my-header bgImg="https://raw.githubusercontent.com/NobeKanai/pics/main/img/2020120912442511.png">
     <h1>友链</h1>
   </my-header>
 
